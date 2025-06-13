@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Welcome from "../Welcome";
 import UserList from "../UserList";
+import styles from './Test1.module.css';
 
 function Button() {
     const [count, setCount] = useState(0)
@@ -40,7 +41,7 @@ function Test1() {
     }
     return (
         <>
-            <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', textDecoration: 'underline' }}>
+            <h1 className={styles.heading}>
                 Hello world!
             </h1>
             <Welcome name={welcomeName} />
@@ -48,23 +49,17 @@ function Test1() {
             <UserList />
             <hr />
             <div>
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <input
-                        type="text"
-                        value={b}
-                        onChange={(e) => setB(e.target.value)}
-                        style={{ width: '200px', height: '50px', fontSize: '20px' }}
-                        placeholder="Enter your name"
+                <form onSubmit={handleSubmit} className={styles.formContainer}>
+                    <input 
+                        type="text" 
+                        value={b} 
+                        onChange={(e) => setB(e.target.value)} 
+                        className={styles.inputBox}
+                        placeholder="Enter your name" 
                     />
-                    <button
-                        type="submit"
-                        style={{
-                            backgroundColor: '#3b82f6',
-                            color: 'white',
-                            borderRadius: '0.375rem',
-                            padding: '0.5rem',
-                            marginTop: '1.5rem'
-                        }}
+                    <button 
+                        type="submit" 
+                        className={styles.submitBtn}
                     >
                         Submit
                     </button>

@@ -1,32 +1,21 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import styles from './Navbar.module.css';
 
 function Navbar() {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('isLoggedIn');
+        navigate('/login');
+    };
+
     return (
-        <nav style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            padding: '1rem',
-            backgroundColor: '#f3f4f6',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-            zIndex: 1000
-        }}>
-            <ul style={{
-                display: 'flex',
-                gap: '1rem',
-                listStyle: 'none',
-                margin: 0,
-                padding: 0
-            }}>
+        <nav className={styles.navbar}>
+            <ul className={styles.navlist}>
                 <li>
                     <NavLink 
                         to="/home"
-                        style={({ isActive }) => ({
-                            color: isActive ? '#3b82f6' : 'black',
-                            textDecoration: isActive ? 'underline' : 'none',
-                            fontWeight: isActive ? 'bold' : 'normal'
-                        })}
+                        className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
                     >
                         Home
                     </NavLink>
@@ -34,11 +23,7 @@ function Navbar() {
                 <li>
                     <NavLink 
                         to="/about"
-                        style={({ isActive }) => ({
-                            color: isActive ? '#3b82f6' : 'black',
-                            textDecoration: isActive ? 'underline' : 'none',
-                            fontWeight: isActive ? 'bold' : 'normal'
-                        })}
+                        className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
                     >
                         About
                     </NavLink>
@@ -46,11 +31,7 @@ function Navbar() {
                 <li>
                     <NavLink 
                         to="/contact"
-                        style={({ isActive }) => ({
-                            color: isActive ? '#3b82f6' : 'black',
-                            textDecoration: isActive ? 'underline' : 'none',
-                            fontWeight: isActive ? 'bold' : 'normal'
-                        })}
+                        className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
                     >
                         Contact
                     </NavLink>
@@ -58,14 +39,25 @@ function Navbar() {
                 <li>
                     <NavLink 
                         to="/test1"
-                        style={({ isActive }) => ({
-                            color: isActive ? '#3b82f6' : 'black',
-                            textDecoration: isActive ? 'underline' : 'none',
-                            fontWeight: isActive ? 'bold' : 'normal'
-                        })}
+                        className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
                     >
                         Test1
                     </NavLink>
+                </li>
+                <li className={styles.logoutBtn}>
+                    <button
+                        onClick={handleLogout}
+                        style={{
+                            background: 'none',
+                            border: 'none',
+                            color: 'inherit',
+                            font: 'inherit',
+                            cursor: 'pointer',
+                            padding: 0
+                        }}
+                    >
+                        Logout
+                    </button>
                 </li>
             </ul>
         </nav>
