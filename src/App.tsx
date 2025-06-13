@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './App.css'
+import Welcome from './Components/Welcome'
+import UserList from './Components/UserList'
 
 function Button() {
     const [count, setCount] = useState(0)
@@ -28,10 +30,12 @@ function App() {
 
     const [b, setB] = useState("");
     const [displayValue, setDisplayValue] = useState("");
+    const [welcomeName, setWelcomeName] = useState("Amit");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setDisplayValue(b);
+        setWelcomeName(b);
         setB("");
     }
     
@@ -40,6 +44,9 @@ function App() {
             <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', textDecoration: 'underline' }}>
                 Hello world!
             </h1>
+            <Welcome name={welcomeName} />
+            <Welcome name="Sara" />
+            <UserList />
             <hr />
             <div>
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -74,7 +81,6 @@ function App() {
                 {a > 0 && (
                     <button onClick={() => setA(0)}>Reset</button>
                 )}
-                {/* <button onClick={() => setA(0)}>Reset</button> */}
             </div>
             <hr />
             <div className="card">
