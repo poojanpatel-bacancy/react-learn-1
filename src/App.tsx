@@ -1,8 +1,17 @@
 import { useState } from 'react'
 import './App.css'
 
-function App() {
+function Button() {
     const [count, setCount] = useState(0)
+    return (
+        <button onClick={() => { setCount(count + 1) }}>
+            count is {count}
+        </button>
+    )
+}
+
+function App() {
+    // const [count, setCount] = useState(0)
 
     const [a, setA] = useState(0);
 
@@ -62,13 +71,23 @@ function App() {
                 <h2>the value of a is {a}</h2>
                 <button onClick={handleIncrementA}>Increment</button>
                 <button onClick={handleDecrementA}>Decrement</button>
-                <button onClick={() => setA(0)}>Reset</button>
+                {a > 0 && (
+                    <button onClick={() => setA(0)}>Reset</button>
+                )}
+                {/* <button onClick={() => setA(0)}>Reset</button> */}
             </div>
             <hr />
             <div className="card">
-                <button onClick={() => { setCount(count + 1) }}>
+                {/* <button onClick={() => { setCount(count + 1) }}>
                     count is {count}
                 </button>
+                <button onClick={() => { setCount(count + 1) }}>
+                    count is {count}
+                </button> */}
+
+                <Button />
+                <Button />
+                <Button />
             </div>
         </>
     )
