@@ -23,7 +23,7 @@ function Login() {
     };
 
     return (
-        <div className={styles.loginContainer}>
+        <div>
             <div className={styles.loginBox}>
                 <h2 className={styles.loginTitle}>Login</h2>
                 <form onSubmit={handleSubmit}>

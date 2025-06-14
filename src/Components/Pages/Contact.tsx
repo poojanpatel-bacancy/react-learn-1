@@ -1,8 +1,15 @@
+import Welcome from "../Welcome";
+import { useEffect } from "react";
+
 function Contact() {
+    useEffect(() => {
+        document.title = 'Contact | My App';
+    }, []);
+
     return (
         <div>
             <h1>Contact Page</h1>
-            <p>You can reach us at: example@email.com</p>
+            <Welcome name="Sara test" />
         </div>
     );
 }

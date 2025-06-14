@@ -45,17 +45,7 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li className={styles.logoutBtn}>
-                    <button
-                        onClick={handleLogout}
-                        style={{
-                            background: 'none',
-                            border: 'none',
-                            color: 'inherit',
-                            font: 'inherit',
-                            cursor: 'pointer',
-                            padding: 0
-                        }}
-                    >
+                    <button onClick={handleLogout} className={styles.logoutBtnStyle}>
                         Logout
                     </button>
                 </li>

@@ -1,4 +1,10 @@
+import { useEffect } from "react";
+
 function About() {
+    useEffect(() => {
+        document.title = 'About | My App';
+    }, []);
+
     return (
         <div>
             <h1>About Page</h1>
