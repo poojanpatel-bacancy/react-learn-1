@@ -1,25 +1,79 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 
 function Login() {
+
+    useEffect(() => {
+        document.title = 'Login | My App';
+        usernameRef.current?.focus();
+    }, []);
+
+    const usernameRef = useRef<HTMLInputElement>(null);
 
     //localStorage.removeItem('isLoggedIn');
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({
+        username: '',
+        password: ''
+    });
     const navigate = useNavigate();
+
+    const validateUsername = (value: string) => {
+        if (!value) return 'Username is required';
+        if (value.length < 5 || value.length > 15) return 'Username must be between 5 and 15 characters';
+        if (value.includes(' ')) return 'Spaces are not allowed';
+        if (!/^[a-zA-Z]/.test(value)) return 'Username must start with a letter';
+        if (!/^[a-zA-Z0-9_]+$/.test(value)) return 'Only letters, numbers and underscore allowed';
+        return '';
+    };
+
+    const validatePassword = (value: string) => {
+        if (!value) return 'Password is required';
+        if (value.length < 5 || value.length > 15) return 'Password must be between 5 and 15 characters';
+        return '';
+    };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Simple validation
-        if (username && password) {
-            // Store login state
+        
+        // Validate both fields
+        const usernameError = validateUsername(username);
+        const passwordError = validatePassword(password);
+
+        // Update errors state
+        setErrors({
+            username: usernameError,
+            password: passwordError
+        });
+
+        // If no errors, proceed with login
+        if (!usernameError && !passwordError) {
             localStorage.setItem('isLoggedIn', 'true');
             navigate('/');
-        } else {
-            alert('Please enter both username and password');
         }
+    };
+
+    const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setUsername(value);
+        setErrors(prev => ({
+            ...prev,
+            username: validateUsername(value)
+        }));
+    };
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setPassword(value);
+        setErrors(prev => ({
+            ...prev,
+            password: validatePassword(value)
+        }));
     };
 
     return (
@@ -33,11 +87,16 @@ function Login() {
                         </label>
                         <input
                             type="text"
+                            ref={usernameRef}
                             value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            className={styles.inputField}
+                            onChange={handleUsernameChange}
+                            className={`${styles.inputField} ${errors.username ? styles.inputError : ''}`}
                         />
+                        {errors.username && (
+                            <div className={styles.errorMessage}>{errors.username}</div>
+                        )}
                     </div>
+
                     <div className={styles.inputGroupLast}>
                         <label className={styles.inputLabel}>
                             Password
@@ -45,10 +104,14 @@ function Login() {
                         <input
                             type="password"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className={styles.inputField}
+                            onChange={handlePasswordChange}
+                            className={`${styles.inputField} ${errors.password ? styles.inputError : ''}`}
                         />
+                        {errors.password && (
+                            <div className={styles.errorMessage}>{errors.password}</div>
+                        )}
                     </div>
+
                     <button
                         type="submit"
                         className={styles.loginBtn}
