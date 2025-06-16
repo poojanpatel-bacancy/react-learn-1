@@ -6,25 +6,8 @@ import Contact from './Components/Pages/Contact'
 import Test1 from './Components/Pages/Test1'
 import Test2 from './Components/Pages/Test2'
 import Login from './Components/Pages/Login'
-import Navbar from './Components/Navbar'
+import ProtectedRoute from './Components/Layout/ProtectedRoute'
 
-// Protected Route Component
-function ProtectedRoute({ children }: { children: React.ReactNode }) {
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    
-    if (!isLoggedIn) {
-        return <Navigate to="/login" replace />;
-    }
-
-    return (
-        <>
-            <Navbar />
-            <div className="mainContent">
-                {children}
-            </div>
-        </>
-    );
-}
 
 function App() {
     return (
@@ -32,7 +15,7 @@ function App() {
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/" element={<Navigate to="/test1" replace />} />
-                
+
                 <Route path="/home" element={
                     <ProtectedRoute>
                         <Home />
