@@ -1,11 +1,15 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
+import { UserContext } from '../../Context/UserContext';
+import { useContext } from 'react';
 
 function Navbar() {
     const navigate = useNavigate();
 
+    const { setUser } = useContext(UserContext);
+
     const handleLogout = () => {
-        localStorage.removeItem('isLoggedIn');
+        setUser(null);
         navigate('/login');
     };
 

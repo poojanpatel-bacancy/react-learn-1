@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 import { useEffect } from 'react';
 import { useRef } from 'react';
+import { UserContext } from '../../Context/UserContext';
+import { useContext } from 'react';
 
 function Login() {
+    const { setUser } = useContext(UserContext);
 
     useEffect(() => {
         document.title = 'Login | My App';
@@ -40,7 +43,7 @@ function Login() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         // Validate both fields
         const usernameError = validateUsername(username);
         const passwordError = validatePassword(password);
@@ -53,6 +56,14 @@ function Login() {
 
         // If no errors, proceed with login
         if (!usernameError && !passwordError) {
+            // Normally yeh data backend se aata hai
+            const fakeUser = {
+                id: 1,
+                name: 'Poojan Patel',
+                email: 'poojan@example.com'
+            };
+            setUser(fakeUser); // Login hone par user info set kar diya
+
             localStorage.setItem('isLoggedIn', 'true');
             navigate('/');
         }
