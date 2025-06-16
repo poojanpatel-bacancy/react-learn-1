@@ -13,7 +13,7 @@ function Navbar() {
         <nav className={styles.navbar}>
             <ul className={styles.navlist}>
                 <li>
-                    <NavLink 
+                    <NavLink
                         to="/home"
                         className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
                     >
@@ -21,7 +21,7 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink 
+                    <NavLink
                         to="/about"
                         className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
                     >
@@ -29,7 +29,7 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink 
+                    <NavLink
                         to="/contact"
                         className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
                     >
@@ -37,7 +37,7 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink 
+                    <NavLink
                         to="/test1"
                         className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
                     >
@@ -45,7 +45,7 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink 
+                    <NavLink
                         to="/test2"
                         className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
                     >
