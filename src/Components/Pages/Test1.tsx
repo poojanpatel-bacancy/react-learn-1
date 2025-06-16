@@ -2,6 +2,7 @@ import { useState } from "react";
 import Welcome from "../Welcome";
 import UserList from "../UserList";
 import styles from './Test1.module.css';
+import { useEffect } from "react";
 
 function Button() {
     const [count, setCount] = useState(0)
@@ -14,6 +15,11 @@ function Button() {
 
 
 function Test1() {
+    useEffect(() => {
+        document.title = 'Test1';
+    }, []);
+
+
     // const [count, setCount] = useState(0)
 
     const [a, setA] = useState(0);

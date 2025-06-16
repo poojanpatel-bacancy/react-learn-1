@@ -4,6 +4,7 @@ import Home from './Components/Pages/Home'
 import About from './Components/Pages/About'
 import Contact from './Components/Pages/Contact'
 import Test1 from './Components/Pages/Test1'
+import Test2 from './Components/Pages/Test2'
 import Login from './Components/Pages/Login'
 import Navbar from './Components/Navbar'
 
@@ -50,6 +51,11 @@ function App() {
                 <Route path="/test1" element={
                     <ProtectedRoute>
                         <Test1 />
+                    </ProtectedRoute>
+                } />
+                <Route path="/test2" element={
+                    <ProtectedRoute>
+                        <Test2 />
                     </ProtectedRoute>
                 } />
             </Routes>
