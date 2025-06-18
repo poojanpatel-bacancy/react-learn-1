@@ -9,6 +9,7 @@ import Login from './Components/Pages/Login'
 import ProtectedRoute from './Components/Layout/ProtectedRoute'
 import 'bootstrap/dist/css/bootstrap.css';
 import { UserProvider } from './Context/UserContext';
+import PublicRoute from './Components/Layout/PublicRoute'
 
 
 function App() {
@@ -17,7 +18,11 @@ function App() {
             <UserProvider>
                 <BrowserRouter>
                     <Routes>
-                        <Route path="/login" element={<Login />} />
+                        <Route path="/login" element={
+                            <PublicRoute>
+                                <Login />
+                            </PublicRoute>
+                        } />
                         <Route path="/" element={<Navigate to="/test1" replace />} />
 
                         <Route path="/home" element={

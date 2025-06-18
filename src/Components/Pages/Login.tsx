@@ -8,16 +8,11 @@ import { useContext } from 'react';
 import usePageTitle from '../Layout/usePageTitle';
 
 function Login() {
-    const { setUser, user } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
     const navigate = useNavigate();
     usePageTitle('Login | My App');
 
     useEffect(() => {
-        debugger;
-        if (user) {
-            navigate('/test2');
-        }
-
         usernameRef.current?.focus();
     }, []);
 
