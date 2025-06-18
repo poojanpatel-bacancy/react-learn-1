@@ -7,16 +7,20 @@ import { UserContext } from '../../Context/UserContext';
 import { useContext } from 'react';
 
 function Login() {
-    const { setUser } = useContext(UserContext);
+    const { setUser, user } = useContext(UserContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         document.title = 'Login | My App';
+
+        if (user) {
+            navigate('/test2');
+        }
+
         usernameRef.current?.focus();
     }, []);
 
     const usernameRef = useRef<HTMLInputElement>(null);
-
-    //localStorage.removeItem('isLoggedIn');
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -24,7 +28,6 @@ function Login() {
         username: '',
         password: ''
     });
-    const navigate = useNavigate();
 
     const validateUsername = (value: string) => {
         if (!value) return 'Username is required';
@@ -64,8 +67,7 @@ function Login() {
             };
             setUser(fakeUser); // Login hone par user info set kar diya
 
-            localStorage.setItem('isLoggedIn', 'true');
-            navigate('/');
+            navigate('/test2');
         }
     };
 

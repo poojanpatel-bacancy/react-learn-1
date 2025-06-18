@@ -11,6 +11,8 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   // Update localStorage whenever user state changes
   useEffect(() => {
+    console.log('user changed:', user);
+
     if (user) {
       localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('isLoggedIn', 'true');
