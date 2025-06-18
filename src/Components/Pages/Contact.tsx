@@ -1,10 +1,8 @@
+import usePageTitle from "../Layout/usePageTitle";
 import Welcome from "../Welcome";
-import { useEffect } from "react";
 
 function Contact() {
-    useEffect(() => {
-        document.title = 'Contact | My App';
-    }, []);
+    usePageTitle('Contact | My App');
 
     return (
         <div>

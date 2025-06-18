@@ -6,6 +6,7 @@ import { useContext } from "react";
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
     const { user } = useContext(UserContext);
     if (!user) {
+        debugger;
         return <Navigate to="/login" replace />;
     }
 

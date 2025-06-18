@@ -5,14 +5,15 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import { UserContext } from '../../Context/UserContext';
 import { useContext } from 'react';
+import usePageTitle from '../Layout/usePageTitle';
 
 function Login() {
     const { setUser, user } = useContext(UserContext);
     const navigate = useNavigate();
+    usePageTitle('Login | My App');
 
     useEffect(() => {
-        document.title = 'Login | My App';
-
+        debugger;
         if (user) {
             navigate('/test2');
         }

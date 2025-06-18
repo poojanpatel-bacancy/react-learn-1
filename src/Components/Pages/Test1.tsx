@@ -2,7 +2,7 @@ import { useState } from "react";
 import Welcome from "../Welcome";
 import UserList from "../UserList";
 import styles from './Test1.module.css';
-import { useEffect } from "react";
+import usePageTitle from "../Layout/usePageTitle";
 
 function Button() {
     const [count, setCount] = useState(0)
@@ -13,11 +13,8 @@ function Button() {
     )
 }
 
-
 function Test1() {
-    useEffect(() => {
-        document.title = 'Test1';
-    }, []);
+    usePageTitle('Test1 | My App');
 
 
     // const [count, setCount] = useState(0)

@@ -1,15 +1,11 @@
-import { useEffect } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../Context/UserContext";
-
+import usePageTitle from "../Layout/usePageTitle";
 
 // Main App Component
 function Test2() {
+    usePageTitle('Test2 | My App');
     const { user } = useContext(UserContext);
-    useEffect(() => {
-        document.title = 'Test2';
-    }, []);
-
 
     return (
         <>

@@ -1,10 +1,8 @@
-import { useEffect } from "react";
 import UserList from "../UserList";
+import usePageTitle from "../Layout/usePageTitle";
 
 function Home() {
-    useEffect(() => {
-        document.title = 'Home | My App';
-      }, []);
+    usePageTitle('Home | My App');
       
     return (
         <div>

@@ -1,9 +1,7 @@
-import { useEffect } from "react";
+import usePageTitle from "../Layout/usePageTitle";
 
 function About() {
-    useEffect(() => {
-        document.title = 'About | My App';
-    }, []);
+    usePageTitle('About | My App');
 
     return (
         <div>
