@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useRef } from 'react';
 import { UserContext } from '../../Context/UserContext';
 import { useContext } from 'react';
-import usePageTitle from '../Layout/usePageTitle';
+import usePageTitle from '../../Hooks/usePageTitle';
 
 function Login() {
     const { setUser } = useContext(UserContext);

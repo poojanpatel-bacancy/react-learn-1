@@ -1,5 +1,5 @@
 import UserList from "../UserList";
-import usePageTitle from "../Layout/usePageTitle";
+import usePageTitle from "../../Hooks/usePageTitle";
 
 function Home() {
     usePageTitle('Home | My App');

@@ -1,4 +1,4 @@
-import usePageTitle from "../Layout/usePageTitle";
+import usePageTitle from "../../Hooks/usePageTitle";
 import Welcome from "../Welcome";
 
 function Contact() {
@@ -7,7 +7,7 @@ function Contact() {
     return (
         <div>
             <h1>Contact Page</h1>
-            <Welcome name="Sara test" />
+            <Welcome name="Sara test using props" />
         </div>
     );
 }

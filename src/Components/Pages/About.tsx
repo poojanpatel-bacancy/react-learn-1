@@ -1,4 +1,4 @@
-import usePageTitle from "../Layout/usePageTitle";
+import usePageTitle from "../../Hooks/usePageTitle";
 
 function About() {
     usePageTitle('About | My App');
