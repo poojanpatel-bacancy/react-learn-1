@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Welcome from "../Welcome";
-import UserList from "../UserList";
 import styles from './Test1.module.css';
 import usePageTitle from "../../Hooks/usePageTitle";
 
@@ -42,6 +41,31 @@ function Test1() {
         setWelcomeName(b);
         setB("");
     }
+
+    // ✅ Lifting State Up
+    function TemperatureInput({ temp, onTempChange }: { temp: number, onTempChange: (value: number) => void }) {
+        return (
+            <input
+                value={temp}
+                onChange={(e) => onTempChange(Number(e.target.value))}
+                placeholder="तापमान दर्ज करें"
+            />
+        );
+    }
+    function TemperatureOutput({ temp }: { temp: number }) {
+        return temp >= 100 ? <p>Water is boiling</p> : <p>Water is not boiling</p>;
+    }
+    function Calculator() {
+        const [temperature, setTemperature] = useState(0);
+
+        return (
+            <div>
+                <TemperatureInput temp={temperature} onTempChange={(value) => setTemperature(value)} />
+                <TemperatureOutput temp={temperature} />
+            </div>
+        );
+    }
+
     return (
         <>
             <h1 className={styles.heading}>
@@ -49,19 +73,22 @@ function Test1() {
             </h1>
             <Welcome name={welcomeName} />
             <Welcome name="Sara" />
-            <UserList />
+            <div>
+                <p>Lifting State Up</p>
+                <Calculator />
+            </div>
             <hr />
             <div>
                 <form onSubmit={handleSubmit} className={styles.formContainer}>
-                    <input 
-                        type="text" 
-                        value={b} 
-                        onChange={(e) => setB(e.target.value)} 
+                    <input
+                        type="text"
+                        value={b}
+                        onChange={(e) => setB(e.target.value)}
                         className={styles.inputBox}
-                        placeholder="Enter your name" 
+                        placeholder="Enter your name"
                     />
-                    <button 
-                        type="submit" 
+                    <button
+                        type="submit"
                         className={styles.submitBtn}
                     >
                         Submit
