@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { UserProvider } from './Context/UserContext';
 import PublicRoute from './Components/Layout/PublicRoute'
 import Unauthorized from './Components/Pages/Unauthorized'
+import Test3 from './Components/Pages/Test3'
 
 
 function App() {
@@ -57,6 +58,11 @@ function App() {
                         <Route path="/test2" element={
                             <ProtectedRoute>
                                 <Test2 />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="/test3" element={
+                            <ProtectedRoute>
+                                <Test3 />
                             </ProtectedRoute>
                         } />
                     </Routes>
