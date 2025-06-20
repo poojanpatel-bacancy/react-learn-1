@@ -10,6 +10,7 @@ import ProtectedRoute from './Components/Layout/ProtectedRoute'
 import 'bootstrap/dist/css/bootstrap.css';
 import { UserProvider } from './Context/UserContext';
 import PublicRoute from './Components/Layout/PublicRoute'
+import Unauthorized from './Components/Pages/Unauthorized'
 
 
 function App() {
@@ -18,11 +19,17 @@ function App() {
             <UserProvider>
                 <BrowserRouter>
                     <Routes>
+                        // ✅ Unauthorized page
+                        <Route path="/unauthorized" element={<Unauthorized />} />
+
+                        // ✅ Public routes
                         <Route path="/login" element={
                             <PublicRoute>
                                 <Login />
                             </PublicRoute>
                         } />
+
+                        // ✅ Redirect to test1 if no path is provided
                         <Route path="/" element={<Navigate to="/test1" replace />} />
 
                         <Route path="/home" element={
@@ -30,8 +37,10 @@ function App() {
                                 <Home />
                             </ProtectedRoute>
                         } />
+
+                        // ✅ Protected routes with role check
                         <Route path="/about" element={
-                            <ProtectedRoute>
+                            <ProtectedRoute requiredRole="admin">
                                 <About />
                             </ProtectedRoute>
                         } />

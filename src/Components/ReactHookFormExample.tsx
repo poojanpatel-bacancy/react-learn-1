@@ -17,7 +17,7 @@ function ReactHookFormExample() {
   return (
     <div style={{ maxWidth: 400, margin: '2rem auto', padding: 20, border: '1px solid #ccc', borderRadius: 8 }}>
       <h2>React Hook Form Example</h2>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <div id="form1">
         <div style={{ marginBottom: 16 }}>
           <label>Name:</label><br />
           <input {...register('name', { required: 'Name is required', minLength: { value: 3, message: 'At least 3 characters' } })} />
@@ -33,8 +33,8 @@ function ReactHookFormExample() {
           <input type="password" {...register('password', { required: 'Password is required', minLength: { value: 6, message: 'At least 6 characters' } })} />
           {errors.password && <div style={{ color: 'red' }}>{errors.password.message}</div>}
         </div>
-        <button type="submit">Submit</button>
-      </form>
+        <button type="button" onClick={handleSubmit(onSubmit)}>Submit</button>
+      </div>
     </div>
   );
 }

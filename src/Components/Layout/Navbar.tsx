@@ -6,7 +6,7 @@ import { useContext } from 'react';
 function Navbar() {
     const navigate = useNavigate();
 
-    const { setUser } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
 
     const handleLogout = () => {
         setUser(null);
@@ -24,14 +24,17 @@ function Navbar() {
                         Home
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink
-                        to="/about"
-                        className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
-                    >
-                        About
-                    </NavLink>
-                </li>
+                {/* Conditional Rendering - About link only for admin users */}
+                {user && user.role === 'admin' && (
+                    <li>
+                        <NavLink
+                            to="/about"
+                            className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
+                        >
+                            About
+                        </NavLink>
+                    </li>
+                )}
                 <li>
                     <NavLink
                         to="/contact"

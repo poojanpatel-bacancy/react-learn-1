@@ -59,7 +59,8 @@ function Login() {
             const fakeUser = {
                 id: 1,
                 name: 'Poojan Patel',
-                email: 'poojan@example.com'
+                email: 'poojan@example.com',
+                role: 'admin'
             };
             setUser(fakeUser); // Login hone par user info set kar diya
 

@@ -3,11 +3,22 @@ import Navbar from "./Navbar";
 import { UserContext } from "../../Context/UserContext";
 import { useContext } from "react";
 
-function ProtectedRoute({ children }: { children: React.ReactNode }) {
+interface ProtectedRouteProps {
+    children: React.ReactNode;
+    requiredRole?: string; // Optional prop
+}
+
+function ProtectedRoute({ children, requiredRole }: ProtectedRouteProps) {
     const { user } = useContext(UserContext);
+
+    // ✅ Redirect to login if user is not authenticated
     if (!user) {
-        debugger;
         return <Navigate to="/login" replace />;
+    }
+
+    // ✅ Role check (only if requiredRole is provided)
+    if (requiredRole && user.role !== requiredRole) {
+        return <Navigate to="/unauthorized" replace />;
     }
 
     return (
