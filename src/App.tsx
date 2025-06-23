@@ -12,6 +12,7 @@ import { UserProvider } from './Context/UserContext';
 import PublicRoute from './Components/Layout/PublicRoute'
 import Unauthorized from './Components/Pages/Unauthorized'
 import Test3 from './Components/Pages/Test3'
+import Test4 from './Components/Pages/Test4'
 
 
 function App() {
@@ -63,6 +64,11 @@ function App() {
                         <Route path="/test3" element={
                             <ProtectedRoute>
                                 <Test3 />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="/test4" element={
+                            <ProtectedRoute>
+                                <Test4 />
                             </ProtectedRoute>
                         } />
                     </Routes>

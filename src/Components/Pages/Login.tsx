@@ -60,7 +60,7 @@ function Login() {
                 id: 1,
                 name: 'Poojan Patel',
                 email: 'poojan@example.com',
-                role: 'admin'
+                role: 'admin2'
             };
             setUser(fakeUser); // Login hone par user info set kar diya
 

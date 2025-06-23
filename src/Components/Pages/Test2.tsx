@@ -13,7 +13,9 @@ function Test2() {
     return (
         <>
             <h2>Welcome, {user?.name}</h2>
+            <p><b>user details from useContext</b></p>
             <p>Email: {user?.email}</p>
+            <p>Role: {user?.role}</p>
             <FormikYupExample />
             <FormikExample />
             <ReactHookFormExample />
