@@ -13,6 +13,7 @@ import PublicRoute from './Components/Layout/PublicRoute'
 import Unauthorized from './Components/Pages/Unauthorized'
 import Test3 from './Components/Pages/Test3'
 import Test4 from './Components/Pages/Test4'
+import Test5 from './Components/Pages/Test5'
 
 
 function App() {
@@ -69,6 +70,11 @@ function App() {
                         <Route path="/test4" element={
                             <ProtectedRoute>
                                 <Test4 />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="/test5" element={
+                            <ProtectedRoute>
+                                <Test5 />
                             </ProtectedRoute>
                         } />
                     </Routes>

@@ -75,6 +75,14 @@ function Navbar() {
                         Test4
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink
+                        to="/test5"
+                        className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
+                    >
+                        Test5
+                    </NavLink>
+                </li>
                 <li className={styles.logoutBtn}>
                     <button onClick={handleLogout} className={styles.logoutBtnStyle}>
                         Logout
