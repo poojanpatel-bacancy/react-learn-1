@@ -26,14 +26,14 @@ function Navbar() {
                 </li>
                 {/* Conditional Rendering - About link only for admin users */}
                 {/* {user && user.role === 'admin' && ( */}
-                    <li>
-                        <NavLink
-                            to="/about"
-                            className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
-                        >
-                            About
-                        </NavLink>
-                    </li>
+                <li>
+                    <NavLink
+                        to="/about"
+                        className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
+                    >
+                        About
+                    </NavLink>
+                </li>
                 {/* )} */}
                 <li>
                     <NavLink
@@ -81,6 +81,14 @@ function Navbar() {
                         className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
                     >
                         Test5
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to="/test6"
+                        className={({ isActive }) => isActive ? styles.activeLink : styles.inactiveLink}
+                    >
+                        Test6
                     </NavLink>
                 </li>
                 <li className={styles.logoutBtn}>

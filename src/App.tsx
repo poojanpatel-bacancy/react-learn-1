@@ -14,6 +14,7 @@ import Unauthorized from './Components/Pages/Unauthorized'
 import Test3 from './Components/Pages/Test3'
 import Test4 from './Components/Pages/Test4'
 import Test5 from './Components/Pages/Test5'
+import Test6 from './Components/Pages/Test6'
 
 
 function App() {
@@ -75,6 +76,11 @@ function App() {
                         <Route path="/test5" element={
                             <ProtectedRoute>
                                 <Test5 />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="/test6" element={
+                            <ProtectedRoute>
+                                <Test6 />
                             </ProtectedRoute>
                         } />
                     </Routes>

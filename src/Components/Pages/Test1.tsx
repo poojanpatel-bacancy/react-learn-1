@@ -2,15 +2,7 @@ import { useState } from "react";
 import Welcome from "../Welcome";
 import styles from './Test1.module.css';
 import usePageTitle from "../../Hooks/usePageTitle";
-
-function Button() {
-    const [count, setCount] = useState(0)
-    return (
-        <button onClick={() => { setCount(count + 1) }}>
-            count is {count}
-        </button>
-    )
-}
+import CounterButton from "../CounterButton";
 
 function Test1() {
     usePageTitle('Test1 | My App');
@@ -108,9 +100,9 @@ function Test1() {
             </div>
             <hr />
             <div className="card">
-                <Button />
-                <Button />
-                <Button />
+                <CounterButton />
+                <CounterButton />
+                <CounterButton />
             </div>
         </>
     );
