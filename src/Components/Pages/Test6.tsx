@@ -28,9 +28,10 @@ function Test6() {
     }, []);
 
     const handleAddUser = () => {
-        const newId = Math.floor(Math.random() * 10000);
-        const newUser = { ...user, id: newId };
-        setUsers([...users, newUser]);
+        let newId = Math.floor(Math.random() * 10000);
+        let newUser = { ...user, id: newId };
+        let newUpdatedUsersArray = [...users, newUser];
+        setUsers(newUpdatedUsersArray);
         resetForm();
     }
 
@@ -38,12 +39,10 @@ function Test6() {
         debugger;
         console.log(user);
         
-        let updatedUsers = users.map(u => u.id === user.id ? user : u);
-        console.log(updatedUsers);
+        let newUpdatedUsersArray = users.map(u => u.id === user.id ? user : u);
+        console.log(newUpdatedUsersArray);
 
-        console.log(users);
-        setUsers(updatedUsers);
-        console.log(users);
+        setUsers(newUpdatedUsersArray);
 
         resetForm();
         setIsEditModeEnabled(false);
@@ -57,11 +56,8 @@ function Test6() {
 
     const handleDeleteUser = (userToDelete: User) => {
         debugger;
-        let newUpdatedUsers = users.filter(u => u.id !== userToDelete.id);
-
-        console.log(users);
-        setUsers(newUpdatedUsers);
-        console.log(users);
+        let newUpdatedUsersArray = users.filter(u => u.id !== userToDelete.id);
+        setUsers(newUpdatedUsersArray);
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
