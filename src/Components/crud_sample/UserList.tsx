@@ -1,7 +1,7 @@
 import type { User } from "./User";
 import React from "react";
 
-function UserList(props: { users: User[], handleEditUser: (user: User) => void, handleDeleteUser: (user: User) => void }) {
+function UserList(props: { users: User[], handleEditUser: (user: User) => void, handleDeleteUser: (id: number) => void }) {
     const { users, handleEditUser, handleDeleteUser } = props;
 
     console.log("UserList rendered.");
@@ -27,7 +27,7 @@ function UserList(props: { users: User[], handleEditUser: (user: User) => void, 
                             <td>{user.gender}</td>
                             <td>
                                 <button onClick={() => handleEditUser(user)} className="btn btn-primary mx-2">Edit</button>
-                                <button onClick={() => handleDeleteUser(user)} className="btn btn-danger">Delete</button>
+                                <button onClick={() => handleDeleteUser(user.id)} className="btn btn-danger">Delete</button>
                             </td>
                         </tr>
                     ))}

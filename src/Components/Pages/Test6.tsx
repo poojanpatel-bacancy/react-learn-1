@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { User } from "../crud_sample/User";
 import UserList from "../crud_sample/UserList";
 
@@ -11,6 +11,7 @@ function Test6() {
         gender: ""
     });
     const [isEditModeEnabled, setIsEditModeEnabled] = useState(false);
+    const isEditModeRef = useRef(false);
 
     const initialUsers = [
         { id: 1, name: "John Doe", age: 20, gender: "male" },
@@ -35,15 +36,22 @@ function Test6() {
         setUsers(newUpdatedUsersArray);
         resetForm();
         setIsEditModeEnabled(false);
+        isEditModeRef.current = false;
     }
 
     const handleEditUser = useCallback((userToEdit: User) => {
         setIsEditModeEnabled(true);
+        isEditModeRef.current = true;
         setUser(userToEdit);
     }, []);
 
-    const handleDeleteUser = useCallback((userToDelete: User) => {
-        let newUpdatedUsersArray = users.filter(u => u.id !== userToDelete.id);
+    const handleDeleteUser = useCallback((id: number) => {
+        if (isEditModeRef.current) {
+            alert('Please cancel the edit mode before deleting a user.');
+            return;
+        }
+        
+        let newUpdatedUsersArray = users.filter(u => u.id !== id);
         setUsers(newUpdatedUsersArray);
     }, [users]);
 
@@ -78,6 +86,7 @@ function Test6() {
                         <button onClick={() => {
                             resetForm();
                             setIsEditModeEnabled(false);
+                            isEditModeRef.current = false;
                         }} className="btn btn-secondary mb-2">Cancel</button>
                     </div>
                 ) : (
