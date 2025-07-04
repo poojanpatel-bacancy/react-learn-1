@@ -1,8 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import Test5_a from '../Test5_a';
+
 
 const Test5 = () => {
     const [count, setCount] = useState(0);
+
+    const [count2, setCount2] = useState(0);
+    const handleChangeCount2 = useCallback(() => {
+        setCount2(count2 + 1);
+    }, [count2]);
+
 
     const [inputValue, setInputValue] = useState<number | ''>(0);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +49,7 @@ const Test5 = () => {
             />
             <hr />
             {/* Render Test5_a only if inputValue is a valid number */}
-            {typeof inputValue === 'number' && <Test5_a num={inputValue} />}
+            {typeof inputValue === 'number' && <Test5_a num={inputValue} count2={count2} handleChangeCount2={handleChangeCount2} />}
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 const expensiveCalculation = (num: number) => {
     console.log("Calculating...");
@@ -8,12 +8,20 @@ const expensiveCalculation = (num: number) => {
     return num * 2;
 };
 
-function Test5_a({ num }: { num: number }) {
+
+function Test5_a({ num, count2, handleChangeCount2 }: { num: number, count2: number, handleChangeCount2: () => void }) {
     console.log('Test5_a rendered.');
+
+    const result = useMemo(() => {
+        return expensiveCalculation(num);
+    }, [num]);
+
     return (
         <div>
             <h2>expensiveCalculation using react Memo component</h2>
-            <p>Result: {expensiveCalculation(num)}</p>
+            <p>Result: {result}</p>
+            <br />
+            <button onClick={handleChangeCount2}>Increment count2: {count2}</button>
         </div>
     )
 }
