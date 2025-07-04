@@ -15,6 +15,7 @@ import Test3 from './Components/Pages/Test3'
 import Test4 from './Components/Pages/Test4'
 import Test5 from './Components/Pages/Test5'
 import Test6 from './Components/Pages/Test6'
+import Test7 from './Components/Pages/Test7'
 
 
 function App() {
@@ -81,6 +82,11 @@ function App() {
                         <Route path="/test6" element={
                             <ProtectedRoute>
                                 <Test6 />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="/test7" element={
+                            <ProtectedRoute>
+                                <Test7 />
                             </ProtectedRoute>
                         } />
                     </Routes>
