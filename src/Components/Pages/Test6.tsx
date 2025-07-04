@@ -1,11 +1,6 @@
-import { useEffect, useState } from "react";
-
-interface User {
-    id: number;
-    name: string;
-    age: number;
-    gender: string;
-}
+import { useCallback, useEffect, useState } from "react";
+import type { User } from "../crud_sample/User";
+import UserList from "../crud_sample/UserList";
 
 function Test6() {
     const [users, setUsers] = useState<User[]>([]);
@@ -36,42 +31,34 @@ function Test6() {
     }
 
     const handleUpdateUser = () => {
-        debugger;
-        console.log(user);
-        
         let newUpdatedUsersArray = users.map(u => u.id === user.id ? user : u);
-        console.log(newUpdatedUsersArray);
-
         setUsers(newUpdatedUsersArray);
-
         resetForm();
         setIsEditModeEnabled(false);
     }
 
-    const handleEditUser = (userToEdit: User) => {
-        debugger;
+    const handleEditUser = useCallback((userToEdit: User) => {
         setIsEditModeEnabled(true);
         setUser(userToEdit);
-    }
+    }, []);
 
-    const handleDeleteUser = (userToDelete: User) => {
-        debugger;
+    const handleDeleteUser = useCallback((userToDelete: User) => {
         let newUpdatedUsersArray = users.filter(u => u.id !== userToDelete.id);
         setUsers(newUpdatedUsersArray);
-    }
+    }, [users]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         setUser({ ...user, [e.target.name]: e.target.value });
-    }
+    }, [user]);
 
-    const resetForm = () => {
+    const resetForm = useCallback(() => {
         setUser({
             id: 0,
             name: "",
             age: 0,
             gender: ""
         });
-    }
+    }, []);
 
     return (
         <div>
@@ -99,31 +86,7 @@ function Test6() {
             </div>
 
             <br />
-            <table className="table table-bordered">
-                <thead className="table-group-divider">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody className="table-group-divider">
-                    {users.map((user) => (
-                        <tr key={user.id}>
-                            <td>{user.id}</td>
-                            <td>{user.name}</td>
-                            <td>{user.age}</td>
-                            <td>{user.gender}</td>
-                            <td>
-                                <button onClick={() => handleEditUser(user)} className="btn btn-primary mx-2">Edit</button>
-                                <button onClick={() => handleDeleteUser(user)} className="btn btn-danger">Delete</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <UserList users={users} handleEditUser={handleEditUser} handleDeleteUser={handleDeleteUser} />
         </div>
     )
 }
