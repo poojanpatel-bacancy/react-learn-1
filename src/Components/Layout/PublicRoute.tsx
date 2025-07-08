@@ -3,7 +3,6 @@ import { Navigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
 
 function PublicRoute({ children }: { children: React.ReactNode }) {
-    debugger;
     const { user } = useContext(UserContext);
 
     if (user) {

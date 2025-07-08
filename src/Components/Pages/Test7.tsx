@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useUserManagement } from '../crud_clean_architecture/application/useUserManagement';
+import useUserManagement from '../crud_clean_architecture/application/useUserManagement';
 import UserForm from '../crud_clean_architecture/presentation/components/UserForm';
 import UserTable from '../crud_clean_architecture/presentation/components/UserTable';
 

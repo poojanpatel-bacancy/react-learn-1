@@ -6,7 +6,7 @@ import { useContext } from 'react';
 function Navbar() {
     const navigate = useNavigate();
 
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
 
     const handleLogout = () => {
         setUser(null);
